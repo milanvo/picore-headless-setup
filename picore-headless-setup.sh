@@ -156,6 +156,9 @@ function make_image(){
     sudo kpartx -d "$WORK_DIR/piCore-$PICORE_SUBVERSION.custom.img"
     sudo kpartx -a "$WORK_DIR/piCore-$PICORE_SUBVERSION.custom.img"
     
+    # pause
+    sleep 1
+
     echo " * Check custom image partition"
     sudo e2fsck -f "$WORK_DIR/piCore-$PICORE_SUBVERSION.custom.img2"
     sudo resize2fs "$WORK_DIR/piCore-$PICORE_SUBVERSION.custom.img2"
@@ -214,7 +217,7 @@ function make_onboot_list(){
 
 function config_wpa_supplicant(){
     sudo sh -c "echo '$WPA_SUPPLICANT_CONF' > '$MNT_DIR/$PICORE_LOCAL_MYDATA/opt/wpa_supplicant.conf'"
-	sudo sh -c "echo -e 'opt/wpa_supplicant.conf' >> '$MNT_DIR/$PICORE_LOCAL_MYDATA/opt/.filetool.lst'"
+	sudo sh -c "echo 'opt/wpa_supplicant.conf' >> '$MNT_DIR/$PICORE_LOCAL_MYDATA/opt/.filetool.lst'"
 }
 
 function config_bootlocal(){
